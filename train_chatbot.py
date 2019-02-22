@@ -96,7 +96,7 @@ for epoch in range(2000):
         optimizer.step()
         print(l)
         loss_lists.append(l.cpu().data.numpy())
-    with open("losses","a") as f:
+    with open("losses.log","a") as f:
         epoch_loss=np.mean(loss_lists)
         f.write("Epoch: {}, Loss: {}\n".format(str(epoch),str(epoch_loss)))
     sheduler.step(epoch_loss)
