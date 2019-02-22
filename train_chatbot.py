@@ -31,10 +31,10 @@ with open("Q_no_repeat","wb") as f:
 with open("A_no_repeat","wb") as f:
     pickle.dump(answers_tok_no_repeat,f,protocol=pickle.HIGHEST_PROTOCOL)'''
 
-with open("Q_no_repeat","rb") as f:
+with open("pickle/Q_no_repeat_all.pkl","rb") as f:
     questions_tok=pickle.load(f)
 
-with open("A_no_repeat","rb") as f:
+with open("pickle/A_no_repeat_all.pkl","rb") as f:
     answers_tok=pickle.load(f)
 
 maxlen_q,maxlen_a=19,19
@@ -46,10 +46,10 @@ with open("length_classified_answers","rb") as f:
     length_classified_answers=pickle.load(f)'''
 
 
-with open("word_index_dict","rb") as f:
+with open("pickle/word_index_dict_all.pkl","rb") as f:
     word_index_dict=pickle.load(f)
 
-with open("index_word_dict","rb") as f:
+with open("pickle/index_word_dict_all.pkl","rb") as f:
     index_word_dict=pickle.load(f)
 
 
@@ -101,9 +101,9 @@ for epoch in range(2000):
         f.write("Epoch: {}, Loss: {}\n".format(str(epoch),str(epoch_loss)))
     sheduler.step(epoch_loss)
     #check model weights
-    with open("weights/encoder","wb") as f:
+    with open("weights/encoder.pkl","wb") as f:
         pickle.dump([ele.cpu() for ele in params_encoder],f,protocol=pickle.HIGHEST_PROTOCOL)
-    with open("weights/decoder","wb") as f:
+    with open("weights/decoder.pkl","wb") as f:
         pickle.dump([ele.cpu() for ele in params_decoder],f,protocol=pickle.HIGHEST_PROTOCOL)
-    with open("weights/attention", "wb") as f:
+    with open("weights/attention.pkl", "wb") as f:
         pickle.dump([ele.cpu() for ele in params_attention], f, protocol=pickle.HIGHEST_PROTOCOL)

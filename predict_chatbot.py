@@ -62,3 +62,7 @@ def chat(string):
         else:
             break
     return "".join(reply)
+
+if __name__ == "__main__": 
+    res = chat("你好嗎")
+    print(res)
