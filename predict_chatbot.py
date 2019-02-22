@@ -24,13 +24,13 @@ params_encoder,params_decoder,params_attention=\
     list(encoder.parameters()),list(decoder.parameters()),list(attention.parameters())
 
 # load weights into model
-with open("weights/encoder", "rb") as f:
+with open("weights/encoder.pkl", "rb") as f:
     weights_encoder=pickle.load(f)
 
-with open("weights/decoder", "rb") as f:
+with open("weights/decoder.pkl", "rb") as f:
     weights_decoder=pickle.load(f)
 
-with open("weights/attention", "rb") as f:
+with open("weights/attention.pkl", "rb") as f:
     weights_attention=pickle.load(f)
 
 for i in range(len(params_encoder)):
